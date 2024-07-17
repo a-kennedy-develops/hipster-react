@@ -6,3 +6,4 @@ target/
 coverage/
 postcss.config.js
 target/classes/static/
+tailwind.config.js

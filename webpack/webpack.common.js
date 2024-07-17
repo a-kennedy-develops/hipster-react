@@ -55,6 +55,7 @@ module.exports = async options => {
             path.resolve(__dirname, 'utils.js'),
             path.resolve(__dirname, '../postcss.config.js'),
             path.resolve(__dirname, '../tsconfig.json'),
+            path.resolve(__dirname, '../tailwind.config.js'),
           ],
         },
       },
