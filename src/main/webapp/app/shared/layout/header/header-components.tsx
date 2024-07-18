@@ -11,7 +11,7 @@ export const BrandIcon = props => (
   </div>
 );
 
-export const Brand = () => (
+export const BrandHeaderLink = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
     <span className="brand-title">
@@ -21,7 +21,7 @@ export const Brand = () => (
   </NavbarBrand>
 );
 
-export const Home = () => (
+export const HomeHeaderLink = () => (
   <NavItem>
     <NavLink tag={Link} to="/" className="d-flex align-items-center">
       <FontAwesomeIcon icon="home" />

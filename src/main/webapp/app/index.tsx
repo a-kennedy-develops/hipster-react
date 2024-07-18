@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import getStore from 'app/config/store';
 import { registerLocale } from 'app/config/translation';
 import setupAxiosInterceptors from 'app/config/axios-interceptor';
-import { clearAuthentication } from 'app/shared/reducers/authentication';
+import { clearAuthentication } from 'app/shared/redux/slices/authentication';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import AppComponent from 'app/app';
 import { loadIcons } from 'app/config/icon-loader';

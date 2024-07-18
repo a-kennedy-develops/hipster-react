@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { serializeAxiosError } from 'app/shared/reducers/reducer.utils';
+import { serializeAxiosError } from 'app/shared/redux/slices/reducer.utils';
 
 const initialState = {
   activationSuccess: false,

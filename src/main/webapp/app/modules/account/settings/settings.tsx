@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { locales, languages } from 'app/config/translation';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { getSession } from 'app/shared/reducers/authentication';
+import { getSession } from 'app/shared/redux/slices/authentication';
 import { saveAccountSettings, reset } from './settings.reducer';
 
 export const SettingsPage = () => {

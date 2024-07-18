@@ -1,6 +1,6 @@
 import { translate } from 'react-jhipster';
 import { toast } from 'react-toastify';
-import { isFulfilledAction, isRejectedAction } from 'app/shared/reducers/reducer.utils';
+import { isFulfilledAction, isRejectedAction } from 'app/shared/redux/slices/reducer.utils';
 import { isAxiosError } from 'axios';
 import { FieldErrorVM, isProblemWithMessage } from 'app/shared/jhipster/problem-details';
 import { getMessageFromHeaders } from 'app/shared/jhipster/headers';

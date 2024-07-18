@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { login } from 'app/shared/reducers/authentication';
+import { login } from 'app/shared/redux/slices/authentication';
 import LoginModal from './login-modal';
 
 export const Login = () => {

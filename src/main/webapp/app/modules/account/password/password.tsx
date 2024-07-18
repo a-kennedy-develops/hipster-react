@@ -4,9 +4,9 @@ import { Row, Col, Button } from 'reactstrap';
 import { toast } from 'react-toastify';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { getSession } from 'app/shared/reducers/authentication';
+import { getSession } from 'app/shared/redux/slices/authentication';
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
-import { savePassword, reset } from './password.reducer';
+import { savePasswordRequest, reset } from './redux/passwordSlice';
 
 export const PasswordPage = () => {
   const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ export const PasswordPage = () => {
   }, []);
 
   const handleValidSubmit = ({ currentPassword, newPassword }) => {
-    dispatch(savePassword({ currentPassword, newPassword }));
+    dispatch(savePasswordRequest({ currentPassword, newPassword }));
   };
 
   const updatePassword = event => setPassword(event.target.value);

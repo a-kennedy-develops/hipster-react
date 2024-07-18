@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { logout } from 'app/shared/reducers/authentication';
+import { logout } from 'app/shared/redux/slices/authentication';
 
 export const Logout = () => {
   const authentication = useAppSelector(state => state.authentication);

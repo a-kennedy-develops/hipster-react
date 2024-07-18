@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice, isPending, isRejected } from '@reduxjs/toolkit';
 
-import { serializeAxiosError } from 'app/shared/reducers/reducer.utils';
+import { serializeAxiosError } from 'app/shared/redux/slices/reducer.utils';
 import { AppThunk } from 'app/config/store';
 
 const initialState = {
