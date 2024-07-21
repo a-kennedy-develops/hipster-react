@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { toast } from 'react-toastify';
+
+import { Button } from '@/components/ui/button';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getSession } from 'app/shared/redux/slices/authentication';
@@ -86,7 +88,7 @@ export const PasswordPage = () => {
               }}
               data-cy="confirmPassword"
             />
-            <Button color="success" type="submit" data-cy="submit">
+            <Button type="submit" data-cy="submit">
               <Translate contentKey="password.form.button">Save</Translate>
             </Button>
           </ValidatedForm>
