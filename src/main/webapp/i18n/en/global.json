@@ -60,16 +60,23 @@
         "dontmatch": "The password and its confirmation do not match!"
       },
       "validate": {
+        "currentpassword": {
+          "required": "Your current password is required.",
+          "minlength": "Your current password should be at least 4 characters.",
+          "maxlength": "Your current password cannot be longer than 50 characters."
+        },
         "newpassword": {
           "required": "Your password is required.",
           "minlength": "Your password is required to be at least 4 characters.",
           "maxlength": "Your password cannot be longer than 50 characters.",
-          "strength": "Password strength:"
+          "strength": "Password strength:",
+          "different": "Your new password cannot be the same as your current password."
         },
         "confirmpassword": {
           "required": "Your confirmation password is required.",
           "minlength": "Your confirmation password is required to be at least 4 characters.",
-          "maxlength": "Your confirmation password cannot be longer than 50 characters."
+          "maxlength": "Your confirmation password cannot be longer than 50 characters.",
+          "match": "The password and its confirmation do not match."
         },
         "email": {
           "required": "Your email is required.",
