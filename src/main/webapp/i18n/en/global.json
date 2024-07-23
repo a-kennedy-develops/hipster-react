@@ -56,9 +56,6 @@
           "link": "Register a new account"
         }
       },
-      "error": {
-        "dontmatch": "The password and its confirmation do not match!"
-      },
       "validate": {
         "currentpassword": {
           "required": "Your current password is required.",

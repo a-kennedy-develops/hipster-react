@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
+import { AxiosError, isAxiosError } from 'axios';
 
 export interface IPassword {
   currentPassword: string;
@@ -41,7 +41,11 @@ const passwordSlice = createSlice({
       state.loading = false;
       state.updateSuccess = false;
       state.updateFailure = true;
-      state.errorMessage = action.payload?.message || 'password.messages.error'; // Use payload if provided, otherwise fallback message
+      if (isAxiosError(action.payload)) {
+        state.errorMessage = action.payload.response?.data.detail;
+      } else {
+        state.errorMessage = '<strong>An error has occurred!</strong> The password could not be changed.';
+      }
     },
     reset(_state) {
       return initialState;

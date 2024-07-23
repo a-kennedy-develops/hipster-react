@@ -15,7 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { passwordSchema } from './form/passwordSchema';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Input } from '@/components/ui/input/input';
 
 export const PasswordPage = () => {
   const [password, setPassword] = useState('');
@@ -38,10 +38,6 @@ export const PasswordPage = () => {
     },
     mode: 'onTouched',
   });
-
-  // const handleValidSubmit = ({ currentPassword, newPassword }) => {
-  //   dispatch(savePasswordRequest({ currentPassword, newPassword }));
-  // };
 
   const handleSubmitPassword = (values: z.infer<typeof passwordSchema>) => {
     dispatch(savePasswordRequest({ currentPassword: values.currentPassword, newPassword: values.newPassword }));
@@ -67,7 +63,7 @@ export const PasswordPage = () => {
       toast.success(translate(successMessage));
       clearFormFields();
     } else if (errorMessage) {
-      toast.error(translate(errorMessage));
+      toast.error(errorMessage);
     }
     dispatch(reset());
   }, [successMessage, errorMessage]);
