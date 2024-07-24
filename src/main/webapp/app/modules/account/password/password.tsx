@@ -140,11 +140,19 @@ export const PasswordPage = () => {
                 )}
               />
               <div className="flex">
-                <Button className="mr-6" size="lg" disabled={isLoading} type="submit" data-cy="submit">
+                <Button className="mr-6" size="lg" disabled={isLoading || !form.formState.isValid} type="submit" data-cy="submit">
                   {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <Translate contentKey="password.form.button">Save</Translate>
                 </Button>
-                <Button size="lg" variant="secondary" disabled={isLoading} type="button" onClick={clearFormFields} data-cy="clear">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  disabled={isLoading || !form.formState.isDirty}
+                  type="button"
+                  onClick={clearFormFields}
+                  aria-label="Clear form entries"
+                  data-cy="clear"
+                >
                   <Translate contentKey="password.form.clear">Clear</Translate>
                 </Button>
               </div>
