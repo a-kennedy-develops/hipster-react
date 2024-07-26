@@ -83,7 +83,7 @@ export const SettingsPage = () => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="settings-title">
+          <h2 id="settings-title" className="mb-2">
             <Translate contentKey="settings.title" interpolate={{ username: account.login }}>
               User settings for {account.login}
             </Translate>
@@ -174,7 +174,13 @@ export const SettingsPage = () => {
                 )}
               />
               <div className="flex">
-                <Button className="mr-6" size="lg" type="submit" disabled={isLoading || !form.formState.isValid} data-cy="submit">
+                <Button
+                  className="mr-6"
+                  size="lg"
+                  type="submit"
+                  disabled={isLoading || !form.formState.isValid || !form.formState.isDirty}
+                  data-cy="submit"
+                >
                   {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <Translate contentKey="settings.form.button">Save</Translate>
                 </Button>
