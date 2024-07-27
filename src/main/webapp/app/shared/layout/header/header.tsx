@@ -47,7 +47,7 @@ const Header = (props: IHeaderProps) => {
     <div id="app-header">
       {renderDevRibbon()}
       <LoadingBar className="loading-bar" />
-      <Navbar data-cy="navbar" dark expand="md" fixed="top" className="jh-navbar">
+      <Navbar data-cy="navbar" dark expand="md" fixed="top" className="jh-navbar bg-primary text-white">
         <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
         <BrandHeaderLink />
         <Collapse isOpen={menuOpen} navbar>
