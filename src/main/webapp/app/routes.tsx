@@ -28,7 +28,7 @@ const Admin = Loadable({
 });
 const AppRoutes = () => {
   return (
-    <div className="view-routes">
+    <div className="h-full">
       <ErrorBoundaryRoutes>
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />

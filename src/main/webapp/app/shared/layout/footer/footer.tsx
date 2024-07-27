@@ -1,18 +1,15 @@
-import './footer.scss';
-
 import React from 'react';
 import { Translate } from 'react-jhipster';
-import { Col, Row } from 'reactstrap';
 
 const Footer = () => (
-  <div className="footer page-content">
-    <Row>
-      <Col md="12">
+  <div className="h-12 page-content mt-auto bg-primary p-4">
+    <div className="flex flex-col md:flex-row">
+      <div className="w-full md:w-12/12 text-white">
         <p>
           <Translate contentKey="footer">Your footer</Translate>
         </p>
-      </Col>
-    </Row>
+      </div>
+    </div>
   </div>
 );
 
