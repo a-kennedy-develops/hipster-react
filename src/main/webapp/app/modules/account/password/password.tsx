@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
+import { Translate, translate } from 'react-jhipster';
 import { Row, Col } from 'reactstrap';
 import { toast } from 'react-toastify';
 
@@ -14,8 +14,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { passwordSchema } from './form/passwordSchema';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Input } from '@/components/ui/input/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
 export const PasswordPage = () => {
   const [password, setPassword] = useState('');

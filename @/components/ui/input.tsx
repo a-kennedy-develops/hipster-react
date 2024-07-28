@@ -1,6 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { Button } from '../button';
+import { Button } from './button';
 import { CircleAlert, EyeIcon, EyeOff } from 'lucide-react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -50,7 +50,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type,
           type="button"
           size="icon"
           onClick={togglePasswordVisibility}
-          className={clsx('flex items-center mr-2', error && 'text-destructive')}
+          className={clsx('flex items-center', error && 'text-destructive')}
         >
           {showPassword ? <EyeOff /> : <EyeIcon />}
         </Button>
