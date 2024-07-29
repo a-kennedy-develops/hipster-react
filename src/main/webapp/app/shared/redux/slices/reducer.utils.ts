@@ -115,7 +115,7 @@ export const createEntitySlice = <T, Reducers extends SliceCaseReducers<EntitySt
        * while calling `createEntitySlice`
        * */
       if (!skipRejectionHandling) {
-        builder.addMatcher(isRejectedAction, (state, action) => {
+        builder.addMatcher(isRejectedAction, (state, _action) => {
           state.loading = false;
           state.updating = false;
           state.updateSuccess = false;

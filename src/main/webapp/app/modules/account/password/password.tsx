@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getSession } from 'app/shared/redux/slices/authentication';
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
-import { savePasswordRequest, reset } from './redux/passwordSlice';
+import { usePasswordStore } from './redux/passwordSlice';
 import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -21,11 +21,13 @@ export const PasswordPage = () => {
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
 
+  const { successMessage, errorMessage, loading, savePassword, reset } = usePasswordStore();
+
   useEffect(() => {
-    dispatch(reset());
+    reset();
     dispatch(getSession());
     return () => {
-      dispatch(reset());
+      reset();
     };
   }, []);
 
@@ -40,7 +42,7 @@ export const PasswordPage = () => {
   });
 
   const handleSubmitPassword = (values: z.infer<typeof passwordSchema>) => {
-    dispatch(savePasswordRequest({ currentPassword: values.currentPassword, newPassword: values.newPassword }));
+    savePassword({ currentPassword: values.currentPassword, newPassword: values.newPassword });
   };
 
   const clearFormFields = () => {
@@ -54,9 +56,6 @@ export const PasswordPage = () => {
 
   // Selectors
   const account = useAppSelector(state => state.authentication.account);
-  const successMessage = useAppSelector(state => state.password.successMessage);
-  const errorMessage = useAppSelector(state => state.password.errorMessage);
-  const isLoading = useAppSelector(state => state.password.loading);
 
   useEffect(() => {
     if (successMessage) {
@@ -65,7 +64,7 @@ export const PasswordPage = () => {
     } else if (errorMessage) {
       toast.error(errorMessage);
     }
-    dispatch(reset());
+    reset();
   }, [successMessage, errorMessage]);
 
   return (
@@ -140,14 +139,14 @@ export const PasswordPage = () => {
                 )}
               />
               <div className="flex">
-                <Button className="mr-6" size="lg" disabled={isLoading || !form.formState.isValid} type="submit" data-cy="submit">
-                  {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                <Button className="mr-6" size="lg" disabled={loading || !form.formState.isValid} type="submit" data-cy="submit">
+                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <Translate contentKey="password.form.button">Save</Translate>
                 </Button>
                 <Button
                   size="lg"
                   variant="secondary"
-                  disabled={isLoading || !form.formState.isDirty}
+                  disabled={loading || !form.formState.isDirty}
                   type="button"
                   onClick={clearFormFields}
                   aria-label="Clear form entries"

@@ -5,7 +5,7 @@ import administration from 'app/modules/administration/administration.reducer';
 import userManagement from 'app/modules/administration/user-management/user-management.reducer';
 import register from 'app/modules/account/register/register.reducer';
 import activate from 'app/modules/account/activate/activate.reducer';
-import password from 'app/modules/account/password/redux/passwordSlice';
+// import password from 'app/modules/account/password/redux/passwordSlice';
 import settings from 'app/modules/account/settings/settings.reducer';
 import passwordReset from 'app/modules/account/password-reset/password-reset.reducer';
 import entitiesReducers from 'app/entities/reducers';
@@ -23,7 +23,7 @@ const rootSlices: ReducersMapObject = {
   register,
   activate,
   passwordReset,
-  password,
+  // password,
   settings,
   loadingBar,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */

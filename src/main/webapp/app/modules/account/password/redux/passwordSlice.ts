@@ -1,7 +1,10 @@
-import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
-import { AxiosError, isAxiosError } from 'axios';
+import axios, { isAxiosError } from 'axios';
+import { translate } from 'react-jhipster';
+import { create } from 'zustand';
 
-export interface IPassword {
+const apiUrl = 'api/account';
+
+interface IPassword {
   currentPassword: string;
   newPassword: string;
 }
@@ -22,37 +25,28 @@ const initialState: PasswordState = {
   updateFailure: false,
 };
 
-const passwordSlice = createSlice({
-  name: 'password',
-  initialState,
-  reducers: {
-    savePasswordRequest(state, _action: PayloadAction<IPassword>) {
-      state.errorMessage = null;
-      state.updateSuccess = false;
-      state.loading = true;
-    },
-    savePasswordSuccess(state) {
-      state.loading = false;
-      state.updateSuccess = true;
-      state.updateFailure = false;
-      state.successMessage = 'password.messages.success';
-    },
-    savePasswordFailure(state, action: PayloadAction<AxiosError | SerializedError>) {
-      state.loading = false;
-      state.updateSuccess = false;
-      state.updateFailure = true;
-      if (isAxiosError(action.payload)) {
-        state.errorMessage = action.payload.response?.data.detail;
-      } else {
-        state.errorMessage = '<strong>An error has occurred!</strong> The password could not be changed.';
-      }
-    },
-    reset(_state) {
-      return initialState;
-    },
+type PasswordStore = PasswordState & {
+  savePassword: (password: IPassword) => Promise<void>;
+  reset: () => void;
+};
+
+export const usePasswordStore = create<PasswordStore>(set => ({
+  ...initialState,
+  async savePassword(password: IPassword) {
+    try {
+      set({ loading: true, errorMessage: null });
+      await axios.post(`${apiUrl}/change-password`, password);
+      set({ loading: false, updateSuccess: true, updateFailure: false, successMessage: translate('password.messages.success') });
+    } catch (error) {
+      set({
+        loading: false,
+        updateSuccess: false,
+        updateFailure: true,
+        errorMessage: isAxiosError(error) ? `Error: ${error.response?.data?.detail}` : translate('password.messages.error'),
+      });
+    }
   },
-});
+  reset: () => set({ ...initialState }),
+}));
 
-export const { savePasswordRequest, savePasswordSuccess, savePasswordFailure, reset } = passwordSlice.actions;
-
-export default passwordSlice.reducer;
+export const { getState } = usePasswordStore;
